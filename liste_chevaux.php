@@ -3,6 +3,14 @@ require "connexiong.php";
 $req = " SELECT * from cheval ";
 $stmt = $idcon->query($req);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+$valbtn = isset($_POST['action']) ? $_POST['action'] : '';
+
+if ($valbtn == 'valider') {
+    $myID = isset($_GET['id']) ? $_GET['id'] : '';
+    $idcon->exec("DELETE FROM cheval where NumCh=$myID ");
+}
+
 ?>
 
 <?php include_once 'header.php'; ?>
@@ -57,13 +65,15 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
                             <?php echo $ligne["DateNaissCh"] ?>
                         </td>
                         <td>
-                            <a href="modifiercheval.php?NumCh=<?php echo $line['NumCh'] ?>"
-                             class="btn btn-info edit">
-                             <i class="fa fa-edit"></i><a>
+                            <a href="modifiercheval.php?id=<?php echo $ligne['NumCh'] ?>" class="btn btn-info edit">
+                                <i class="fa fa-edit"></i>
+                                <a>
 
-                                    <button class="btn btn-danger remove" id="delete_ens" type="submit">
+                                    <a href="liste_chevaux.php?id=<?php echo $ligne['NumCh'] ?>"
+                                        class="btn btn-danger remove" value="valider" type="submit" name="action">
                                         <i class="fa fa-times"></i>
-                                    </button>
+                                        <a>
+
                         </td>
 
                     </tr>
