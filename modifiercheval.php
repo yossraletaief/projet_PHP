@@ -74,7 +74,7 @@
 require "connexiong.php";
 
 $myID  = $_GET['id'];
-$req="SELECT * from cheval  where numCh='$myID' ";
+$req="SELECT * from cheval  where NumCh='$myID' ";
 $stmt = $idcon->query($req);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $ligne = $stmt->fetch();
@@ -112,19 +112,19 @@ if ($valbtn == 'valider') {
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input name="NumCh" type="number" class="form-control form-control-user"
-                                    value="<?php echo $line['NumCh'] ?>" placeholder="numero cheval">
+                                    value="<?php echo $ligne['NumCh'] ?>" placeholder="numero cheval">
                             </div>
                             <div class="col-sm-6">
                                 <input name="nomch" type="text" class="form-control form-control-user"
-                                    value="<?php echo $line['nomch'] ?>" placeholder="Nom de cheval">
+                                    value="<?php echo $ligne['nomch'] ?>" placeholder="Nom de cheval">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label>female</label>
-                                <input type="radio" name="SexeCh" value="f">
+                                <input type="radio" name="SexeCh" value="f" <?php if($ligne['SexeCh'] == "f") echo selected ?>>
                                 <label>male</label>
-                                <input type="radio" name="SexeCh" value="m">
+                                <input type="radio" name="SexeCh" value="m" <?php if($ligne['SexeCh'] == "f") echo selected ?>>
                             </div>
 
                             <div class="col-sm-6">
@@ -134,7 +134,7 @@ if ($valbtn == 'valider') {
                         </div>
                         <div class="form-group row">
                             <input name="PoidsCh" type="text" class="form-control form-control-user"
-                            value="<?php echo $line['PoidsCh'] ?>" placeholder=" Poids de cheval">
+                            value="<?php echo $ligne['PoidsCh'] ?>" placeholder=" Poids de cheval">
                         </div>
                         <button type="submit" name="action" value="valider" class="btn btn-primary btn-user btn-block">
                             Modifier cheval
