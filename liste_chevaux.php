@@ -57,12 +57,13 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
                             <?php echo $ligne["DateNaissCh"] ?>
                         </td>
                         <td>
-                            <button class="btn btn-info edit">
-                                <i class="fa fa-edit"></i>
-                            </button>
-                            <button class="btn btn-danger remove" id="delete_ens" type="submit">
-                                <i class="fa fa-times"></i>
-                            </button>
+                            <a href="modifiercheval.php?NumCh=<?php echo $line['NumCh'] ?>"
+                             class="btn btn-info edit">
+                             <i class="fa fa-edit"></i><a>
+
+                                    <button class="btn btn-danger remove" id="delete_ens" type="submit">
+                                        <i class="fa fa-times"></i>
+                                    </button>
                         </td>
 
                     </tr>
