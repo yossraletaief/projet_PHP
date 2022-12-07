@@ -52,9 +52,9 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
                             <?php echo $ligne["PoidsJ"] ?>
                         </td>
                         <td>
-                            <button class="btn btn-info edit">
+                        <a href="modifierJockeys.php?id=<?php echo $ligne['CodeJ'] ?>" class="btn btn-info edit">
                                 <i class="fa fa-edit"></i>
-                            </button>
+                    </a>
                             <button class="btn btn-danger remove" id="delete_ens" type="submit">
                                 <i class="fa fa-times"></i>
                             </button>

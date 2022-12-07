@@ -74,6 +74,8 @@
 require "connexiong.php";
 
 $myID  = $_GET['id'];
+$myID  = isset($_GET['id'])? $_GET['id']:'';
+
 $req="SELECT * from cheval  where NumCh='$myID' ";
 $stmt = $idcon->query($req);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -106,9 +108,9 @@ if ($valbtn == 'valider') {
             <div class="col-lg-12">
                 <div class="p-5">
                     <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Ajouter Cheval</h1>
+                        <h1 class="h4 text-gray-900 mb-4">Modifier Cheval</h1>
                     </div>
-                    <form class="user" action="ajoutercheval.php" method="POST">
+                    <form class="user" action="modifiercheval.php" method="POST">
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input name="NumCh" type="number" class="form-control form-control-user"
@@ -116,7 +118,7 @@ if ($valbtn == 'valider') {
                             </div>
                             <div class="col-sm-6">
                                 <input name="nomch" type="text" class="form-control form-control-user"
-                                    value="<?php echo $ligne['nomch'] ?>" placeholder="Nom de cheval">
+                                    value="<?php echo $ligne['NomCh'] ?>" placeholder="Nom de cheval">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -148,7 +150,5 @@ if ($valbtn == 'valider') {
         </div>
     </div>
 </div>
-
 </div>
-
 <?php include_once 'footer.php'; ?>
