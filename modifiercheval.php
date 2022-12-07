@@ -72,7 +72,15 @@
 
 <?php
 require "connexiong.php";
+
+$myID  = $_GET['id'];
+$req="SELECT * from cheval  where numCh='$myID' ";
+$stmt = $idcon->query($req);
+$stmt->setFetchMode(PDO::FETCH_ASSOC);
+$ligne = $stmt->fetch();
+
 $valbtn = isset($_POST['action']) ? $_POST['action'] : '';
+
 
 if ($valbtn == 'valider') {
 
@@ -104,11 +112,11 @@ if ($valbtn == 'valider') {
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input name="NumCh" type="number" class="form-control form-control-user"
-                                    id="exampleFirstName" placeholder="numero cheval">
+                                    value="<?php echo $line['NumCh'] ?>" placeholder="numero cheval">
                             </div>
                             <div class="col-sm-6">
                                 <input name="nomch" type="text" class="form-control form-control-user"
-                                    id="exampleLastName" placeholder="Nom de cheval">
+                                    value="<?php echo $line['nomch'] ?>" placeholder="Nom de cheval">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -126,7 +134,7 @@ if ($valbtn == 'valider') {
                         </div>
                         <div class="form-group row">
                             <input name="PoidsCh" type="text" class="form-control form-control-user"
-                                id="exampleInputPassword" placeholder=" Poids de cheval">
+                            value="<?php echo $line['PoidsCh'] ?>" placeholder=" Poids de cheval">
                         </div>
                         <button type="submit" name="action" value="valider" class="btn btn-primary btn-user btn-block">
                             Modifier cheval
