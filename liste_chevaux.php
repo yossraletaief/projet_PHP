@@ -4,11 +4,11 @@ $req = " SELECT * from cheval ";
 $stmt = $idcon->query($req);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-$valbtn = isset($_POST['action']) ? $_POST['action'] : '';
 
-if ($valbtn == 'valider') {
-    $myID = isset($_GET['id']) ? $_GET['id'] : '';
-    $idcon->exec("DELETE FROM cheval where NumCh=$myID ");
+if (isset($_GET['action']) && $_GET['action'] == "delete") {
+    $myID = $_GET['id'];
+    $idcon->exec("DELETE FROM cheval where NumCh=$myID");
+
 }
 
 ?>
@@ -69,7 +69,7 @@ if ($valbtn == 'valider') {
                                 <i class="fa fa-edit"></i>
                                 <a>
 
-                                    <a href="liste_chevaux.php?id=<?php echo $ligne['NumCh'] ?>"
+                                    <a href="liste_chevaux.php?id=<?php echo $ligne['NumCh'] ?>&action=delete"
                                         class="btn btn-danger remove" value="valider" type="submit" name="action">
                                         <i class="fa fa-times"></i>
                                         <a>
