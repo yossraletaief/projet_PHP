@@ -122,13 +122,13 @@ if ($valbtn == 'valider') {
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label>female</label>
-                                <input type="radio" name="SexeCh" value="f" <?php if($ligne['SexeCh'] == "f") echo selected ?>>
+                                <input type="radio" name="SexeCh" value="f" >
                                 <label>male</label>
-                                <input type="radio" name="SexeCh" value="m" <?php if($ligne['SexeCh'] == "f") echo selected ?>>
+                                <input type="radio" name="SexeCh" value="m">
                             </div>
 
                             <div class="col-sm-6">
-                                <input class="form-control form-control-user" type="date" name="DateNaissCh">
+                                <input class="form-control form-control-user" type="date" name="DateNaissCh" value="<?php echo $ligne['DateNaissCh'] ?>" >
                             </div>
 
                         </div>
