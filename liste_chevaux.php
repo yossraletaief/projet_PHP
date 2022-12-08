@@ -1,6 +1,6 @@
 <?php
 require "connexiong.php";
-$req = " SELECT * from cheval ";
+$req = " SELECT * from cheval";
 $stmt = $idcon->query($req);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
