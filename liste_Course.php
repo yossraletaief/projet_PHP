@@ -1,13 +1,13 @@
 <?php
 require "connexiong.php";
-$req = " SELECT * from jockeys ";
+$req = " SELECT * from course ";
 $stmt = $idcon->query($req);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
 
 if (isset($_GET['action']) && $_GET['action'] == "delete") {
     $myID = $_GET['id'];
-    $idcon->exec("DELETE FROM jockeys where CodeJ=$myID");
+    $idcon->exec("DELETE FROM course where NumCh = 211 AND CodeJ = 12 AND CodeParc = 25 AND DateCourse =");
 
 }
 ?>
@@ -47,22 +47,22 @@ if (isset($_GET['action']) && $_GET['action'] == "delete") {
 
                     <tr>
                         <td>
+                            <?php echo $ligne["NumCh"] ?>
+                        </td>
+                        <td>
                             <?php echo $ligne["CodeJ"] ?>
                         </td>
                         <td>
-                            <?php echo $ligne["NomJ"] ?>
+                            <?php echo $ligne["CodeParc"] ?>
                         </td>
                         <td>
-                            <?php echo $ligne["PrénomJ"] ?>
+                            <?php echo $ligne["DateCourse"] ?>
                         </td>
                         <td>
-                            <?php echo $ligne["PoidsJ"] ?>
-                        </td>
-                        <td>
-                            <a href="modifierJockeys.php?id=<?php echo $ligne['CodeJ'] ?>" class="btn btn-info edit">
+                            <a href="modifierCourse.php?id=<?php echo $ligne['CodeJ'] ?>" class="btn btn-info edit">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a href="liste_Jokey.php?id=<?php echo $ligne['CodeJ'] ?>&action=delete"
+                            <a href="liste_Course.php?id=<?php echo $ligne['CodeJ'] ?>&action=delete"
                                 class="btn btn-danger remove" value="valider" type="submit" name="action">
                                 <i class="fa fa-times"></i>
                                 <a>
