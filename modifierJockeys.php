@@ -18,9 +18,9 @@ if ($valbtn == 'valider') {
     $NomJ=$_POST['NomJ'];
     $PrenomJ=$_POST['PrénomJ'];
     $PoidsJ=$_POST['PoidsJ'];
-    $req="update jockeys set NomJ= '$NomJ',PrénomJ='$PrenomJ',
+    $req2="update jockeys set NomJ= '$NomJ',PrénomJ='$PrenomJ',
     PoidsJ='$PoidsJ' where CodeJ=$CodeJ" ;
-    $idcon->exec($req);
+    $idcon->exec($req2);
 }
 
 ?>
@@ -33,9 +33,9 @@ if ($valbtn == 'valider') {
             <div class="col-lg-12">
                 <div class="p-5">
                     <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Modifier Cheval</h1>
+                        <h1 class="h4 text-gray-900 mb-4">Modifier Jokey</h1>
                     </div>
-                    <form class="user" action="modifierJokeys.php" method="POST">
+                    <form class="user" action="modifierJockeys.php" method="POST">
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input name="CodeJ" type="number" class="form-control form-control-user"
@@ -47,7 +47,7 @@ if ($valbtn == 'valider') {
                             </div>
                         </div>
                         <div class="form-group row">
-                            <input name="Prenom" type="text" class="form-control form-control-user"
+                            <input name="PrénomJ" type="text" class="form-control form-control-user"
                             value="<?php echo $ligne['PrénomJ'] ?>" placeholder=" PrénomJ de Jokeys">
                         </div>
                         <div class="form-group row">

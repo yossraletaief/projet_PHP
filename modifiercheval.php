@@ -76,7 +76,7 @@ require "connexiong.php";
 $myID  = $_GET['id'];
 $myID  = isset($_GET['id'])? $_GET['id']:'';
 
-$req="SELECT * from cheval  where NumCh='$myID' ";
+$req="SELECT * from cheval where NumCh='$myID' ";
 $stmt = $idcon->query($req);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $ligne = $stmt->fetch();
@@ -91,9 +91,9 @@ if ($valbtn == 'valider') {
     $SexeCh=$_POST['SexeCh'];
     $PoidsCh=$_POST['PoidsCh'];
     $DateNaissCh=$_POST['DateNaissCh'];
-    $req="update cheval set NomCh='$nomch',SexeCh= '$SexeCh',PoidsCh='$PoidsCh',
+    $req2="update cheval set NomCh='$nomch',SexeCh= '$SexeCh',PoidsCh='$PoidsCh',
     DateNaissCh='$DateNaissCh' where NumCh=$NumCh" ;
-    $idcon->exec($req);
+    $idcon->exec($req2);
 }
 
 ?>
