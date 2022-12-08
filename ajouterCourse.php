@@ -81,7 +81,7 @@ if ($valbtn == 'valider') {
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input name="courseDate" type="text" class="form-control form-control-user"
+                                <input name="courseDate" type="date" class="form-control form-control-user"
                                     id="exampleInputEmail" placeholder="Date course">
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">

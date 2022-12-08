@@ -66,7 +66,7 @@ if (isset($_GET['action']) && $_GET['action'] == "delete") {
                             <?php echo $ligne["durée"] ?>
                         </td>
                         <td>
-                            <a href="modifierCourse.php?ch=<?php echo $ligne['NumCh'] ?>&j=<?php echo $ligne['CodeJ'] ?>&p=<?php echo $ligne['CodeParc'] ?>"
+                            <a href="modifierCourse.php?ch=<?php echo $ligne['NumCh'] ?>&j=<?php echo $ligne['CodeJ'] ?>&p=<?php echo $ligne['CodeParc'] ?>&dc=<?php echo $ligne['DateCourse'] ?>&d=<?php echo $ligne['durée'] ?>"
                                 class="btn btn-info edit">
                                 <i class="fa fa-edit"></i>
                             </a>

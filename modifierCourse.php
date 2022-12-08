@@ -4,6 +4,8 @@ require "connexiong.php";
 $numch = isset($_GET['ch'])? $_GET['ch']:'';
 $codeJokey = isset($_GET['j'])? $_GET['j']:'';
 $codeParcours=isset($_GET['p'])? $_GET['p']:'';
+$dateCourse=isset($_GET['dc'])? $_GET['dc']:'';
+$dureeCourse=isset($_GET['d'])? $_GET['d']:'';
 
 $req="SELECT * FROM `course` WHERE `NumCh`='$numch' AND `CodeJ`='$codeJokey' AND `CodeParc`='$codeParcours' ";
 $stmt = $idcon->query($req);
@@ -21,9 +23,9 @@ if ($valbtn == 'valider') {
     $courseDate=$_POST['courseDate'];
     $courseDuree=$_POST['courseDuree'];
 
-    $req="UPDATE `course` SET `NumCh`='$NumCh',`CodeJ`='$CodeJ',`CodeParc`='$CodeParc',`DateCourse`='$courseDate',`durée`='$courseDuree' WHERE
+    $req2="UPDATE `course` SET `NumCh`='$NumCh',`CodeJ`='$CodeJ',`CodeParc`='$CodeParc',`DateCourse`='$courseDate',`durée`='$courseDuree' WHERE
     `NumCh`='$numch' AND `CodeJ`='$codeJokey'AND `CodeParc`='$codeParcours' ";
-    $res=$idcon->exec($req);
+    $res=$idcon->exec($req2);
     if ($res) {
         header('Location:liste_Course.php');
     }
@@ -45,8 +47,8 @@ if ($valbtn == 'valider') {
                     <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
 
-                                <select required name="CodeJ" class="form-control" id="CodeJ">
-                                    <option selected="" disabled="">Choisir jokey</option>
+                                <select required name="CodeJ" class="form-control" id="CodeJ" >
+                                    <option selected="true" disabled=""><?php echo $numch?></option>
                                     <?php
                                     $req = " SELECT * from jockeys ";
                                     $stmt = $idcon->query($req);
@@ -61,7 +63,7 @@ if ($valbtn == 'valider') {
                             </div>
                             <div class="col-sm-6">
                                 <select required name="NumCh" class="form-control" id="NumCh">
-                                    <option selected="" disabled="">Choisir cheval</option>
+                                    <option selected="true" disabled=""><?php echo $codeJokey ?></option>
                                     <?php
                                     $req = " SELECT * from cheval ";
                                     $stmt = $idcon->query($req);
@@ -78,7 +80,7 @@ if ($valbtn == 'valider') {
 
                         <div class="form-group">
                             <select required name="CodeParc" class="form-control" id="CodeParc">
-                                <option selected="" disabled="">Choisir parcours</option>
+                                <option selected="true" disabled=""><?php echo $codeParcours ?></option>
                                 <?php
                                     $req = " SELECT * from parcours ";
                                     $stmt = $idcon->query($req);
@@ -94,12 +96,12 @@ if ($valbtn == 'valider') {
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input name="courseDate" type="text" class="form-control form-control-user"
-                                    id="exampleInputEmail" placeholder="Date course">
+                                <input name="courseDate" type="date" class="form-control form-control-user"
+                                    id="exampleInputEmail" placeholder="Date course" value="<?php echo $dateCourse; ?>">
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input name="courseDuree" type="text" class="form-control form-control-user"
-                                    id="exampleInputEmail" placeholder="Durée course">
+                                    id="exampleInputEmail" placeholder="Durée course" value="<?php echo $dureeCourse; ?>">
                             </div>
                         </div>
 
