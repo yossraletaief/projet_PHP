@@ -1,9 +1,11 @@
 <?php
 require "connexiong.php";
 
-$myID  = isset($_GET['id'])? $_GET['id']:'';
+$numch = isset($_GET['ch'])? $_GET['ch']:'';
+$codeJokey = isset($_GET['j'])? $_GET['j']:'';
+$codeParcours=isset($_GET['p'])? $_GET['p']:'';
 
-$req="SELECT * from parcours where CodeParc='$myID' ";
+$req="SELECT * FROM `course` WHERE `NumCh`='$numch' AND `CodeJ`='$codeJokey' AND `CodeParc`='$codeParcours' ";
 $stmt = $idcon->query($req);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $ligne = $stmt->fetch();
@@ -13,12 +15,18 @@ $valbtn = isset($_POST['action']) ? $_POST['action'] : '';
 
 if ($valbtn == 'valider') {
 
-    $CodeP=$_POST['CodeP'];
-    $villeP=$_POST['villeP'];
-    $distanceP=$_POST['distanceP'];
+    $NumCh=$_POST['NumCh'];
+    $CodeJ=$_POST['CodeJ'];
+    $CodeParc=$_POST['CodeParc'];
+    $courseDate=$_POST['courseDate'];
+    $courseDuree=$_POST['courseDuree'];
 
-    $req="UPDATE `parcours` SET `CodeParc`='$CodeP',`Ville`='$villeP',`Distance`='$distanceP' WHERE `CodeParc`='$CodeP'";
-    $idcon->exec($req);
+    $req="UPDATE `course` SET `NumCh`='$NumCh',`CodeJ`='$CodeJ',`CodeParc`='$CodeParc',`DateCourse`='$courseDate',`durée`='$courseDuree' WHERE
+    `NumCh`='$numch' AND `CodeJ`='$codeJokey'AND `CodeParc`='$codeParcours' ";
+    $res=$idcon->exec($req);
+    if ($res) {
+        header('Location:liste_Course.php');
+    }
 }
 
 ?>

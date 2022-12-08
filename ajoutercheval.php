@@ -10,7 +10,11 @@ if ($valbtn == 'valider') {
     $PoidsCh = $_POST['PoidsCh'];
     $DateNaissCh = $_POST['DateNaissCh'];
     $req = "Insert Into cheval values('$NumCh','$nomch','$SexeCh','$PoidsCh','$DateNaissCh')";
-    $idcon->exec($req);
+    $res=$idcon->exec($req);
+
+    if ($res) {
+        header('Location:liste_chevaux.php');
+    }
 }
 
 ?>

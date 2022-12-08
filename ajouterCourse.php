@@ -8,7 +8,10 @@ if ($valbtn == 'valider') {
     $DateCourse = $_POST['courseDate'];
     $duree = $_POST['courseDuree'];
     $req = "Insert Into course values('$NumCh','$CodeJ','$CodeParc ',' $DateCourse','$duree')";
-    $idcon->exec($req);
+    $res=$idcon->exec($req);
+    if ($res) {
+        header('Location:liste_Course.php');
+    }
 }
 
 ?>

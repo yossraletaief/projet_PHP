@@ -17,9 +17,12 @@ if ($valbtn == 'valider') {
     $nomj=$_POST['nomj'];
     $prenomj=$_POST['prenomj'];
     $PoidsJ=$_POST['PoidsJ'];
-    $req2="update jockeys set NomJ= '$NomJ',PrénomJ='$PrenomJ',
+    $req2="update jockeys set NomJ= '$nomj',PrénomJ='$prenomj',
     PoidsJ='$PoidsJ' where CodeJ=$CodeJ" ;
-    $idcon->exec($req2);
+    $res=$idcon->exec($req2);
+    if ($res) {
+        header('Location:liste_Jokey.php');
+    }
 }
 
 ?>
@@ -41,12 +44,12 @@ if ($valbtn == 'valider') {
                                     value="<?php echo $ligne['CodeJ'] ?>" placeholder="code jokeys">
                             </div>
                             <div class="col-sm-6">
-                                <input name="NomJ" type="text" class="form-control form-control-user"
+                                <input name="nomj" type="text" class="form-control form-control-user"
                                     value="<?php echo $ligne['NomJ'] ?>" placeholder="Nom de jokeys">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <input name="PrénomJ" type="text" class="form-control form-control-user"
+                            <input name="prenomj" type="text" class="form-control form-control-user"
                             value="<?php echo $ligne['PrénomJ'] ?>" placeholder=" PrénomJ de Jokeys">
                         </div>
                         <div class="form-group row">

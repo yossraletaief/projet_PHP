@@ -9,7 +9,12 @@ if ($valbtn == 'valider') {
     $distanceP = $_POST['distanceP'];
 
     $req = "Insert Into parcours values('$CodeP','$villeP','$distanceP')";
-    $idcon->exec($req);
+    $res=$idcon->exec($req);
+
+    if ($res) {
+        header('Location:liste_Parcours.php');
+    }
+
 }
 
 ?>

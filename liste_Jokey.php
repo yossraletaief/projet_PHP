@@ -7,7 +7,10 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
 if (isset($_GET['action']) && $_GET['action'] == "delete") {
     $myID = $_GET['id'];
-    $idcon->exec("DELETE FROM jockeys where CodeJ=$myID");
+    $res=$idcon->exec("DELETE FROM jockeys where CodeJ=$myID");
+    if ($res) {
+        header('Location:liste_Jokey.php');
+    }
 
 }
 ?>

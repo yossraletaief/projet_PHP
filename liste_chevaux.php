@@ -7,7 +7,11 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
 if (isset($_GET['action']) && $_GET['action'] == "delete") {
     $myID = $_GET['id'];
-    $idcon->exec("DELETE FROM cheval where NumCh=$myID");
+    $res=$idcon->exec("DELETE FROM cheval where NumCh=$myID");
+
+    if ($res) {
+        header('Location:liste_chevaux.php');
+    }
 
 }
 

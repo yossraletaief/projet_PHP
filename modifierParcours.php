@@ -18,7 +18,10 @@ if ($valbtn == 'valider') {
     $distanceP=$_POST['distanceP'];
 
     $req2="UPDATE `parcours` SET `CodeParc`='$CodeP',`Ville`='$villeP',`Distance`='$distanceP' WHERE `CodeParc`='$CodeP'";
-    $idcon->exec($req2);
+    $res=$idcon->exec($req2);
+    if ($res) {
+        header('Location:liste_Parcours.php');
+    }
 }
 
 ?>

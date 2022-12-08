@@ -6,9 +6,13 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
 
 if (isset($_GET['action']) && $_GET['action'] == "delete") {
-    $myID = $_GET['id'];
-    $idcon->exec("DELETE FROM course where NumCh = 211 AND CodeJ = 12 AND CodeParc = 25 AND DateCourse =");
-
+    $numch = $_GET['ch'];
+    $codeJ = $_GET['j'];
+    $codeParc = $_GET['p'];
+    $res = $idcon->exec("DELETE FROM course where NumCh = '$numch' AND CodeJ = '$codeJ' AND CodeParc = '$codeParc' ");
+    if ($res) {
+        header('Location:liste_Course.php');
+    }
 }
 ?>
 
@@ -18,28 +22,28 @@ if (isset($_GET['action']) && $_GET['action'] == "delete") {
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Liste Jokeys</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Liste Course</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Numero jokey</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Poids</th>
-                        <th>Actions</th>
+                        <th>Num jokey</th>
+                        <th>Num cheval</th>
+                        <th>Num parcours</th>
+                        <th>Date course</th>
+                        <th>Durée</th>
 
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Numero jokey</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Poids</th>
-                        <th>Actions</th>
+                        <th>Num jokey</th>
+                        <th>Num cheval</th>
+                        <th>Num parcours</th>
+                        <th>Date course</th>
+                        <th>Durée</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -47,10 +51,10 @@ if (isset($_GET['action']) && $_GET['action'] == "delete") {
 
                     <tr>
                         <td>
-                            <?php echo $ligne["NumCh"] ?>
+                            <?php echo $ligne["CodeJ"] ?>
                         </td>
                         <td>
-                            <?php echo $ligne["CodeJ"] ?>
+                            <?php echo $ligne["NumCh"] ?>
                         </td>
                         <td>
                             <?php echo $ligne["CodeParc"] ?>
@@ -59,10 +63,14 @@ if (isset($_GET['action']) && $_GET['action'] == "delete") {
                             <?php echo $ligne["DateCourse"] ?>
                         </td>
                         <td>
-                            <a href="modifierCourse.php?id=<?php echo $ligne['CodeJ'] ?>" class="btn btn-info edit">
+                            <?php echo $ligne["durée"] ?>
+                        </td>
+                        <td>
+                            <a href="modifierCourse.php?ch=<?php echo $ligne['NumCh'] ?>&j=<?php echo $ligne['CodeJ'] ?>&p=<?php echo $ligne['CodeParc'] ?>"
+                                class="btn btn-info edit">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a href="liste_Course.php?id=<?php echo $ligne['CodeJ'] ?>&action=delete"
+                            <a href="liste_Course.php?ch=<?php echo $ligne['NumCh'] ?>&j=<?php echo $ligne['CodeJ'] ?>&p=<?php echo $ligne['CodeParc'] ?>&action=delete"
                                 class="btn btn-danger remove" value="valider" type="submit" name="action">
                                 <i class="fa fa-times"></i>
                                 <a>

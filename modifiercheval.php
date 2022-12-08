@@ -1,15 +1,23 @@
 <?php
 require "connexiong.php";
 
-$myID  = $_GET['id'];
-$myID  = isset($_GET['id'])? $_GET['id']:'';
+if (isset($_GET['id'])) {
+    $myID = $_GET['id'];
+} else {
+    $myID = '';
+}
 
 $req="SELECT * from cheval where NumCh='$myID' ";
 $stmt = $idcon->query($req);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $ligne = $stmt->fetch();
 
-$valbtn = isset($_POST['action']) ? $_POST['action'] : '';
+
+if (isset($_POST['action'])) {
+    $valbtn = $_POST['action'];
+} else {
+    $valbtn = '';
+}
 
 
 if ($valbtn == 'valider') {
@@ -20,8 +28,11 @@ if ($valbtn == 'valider') {
     $PoidsCh=$_POST['PoidsCh'];
     $DateNaissCh=$_POST['DateNaissCh'];
     $req2="update cheval set NomCh='$nomch',SexeCh= '$SexeCh',PoidsCh='$PoidsCh',
-    DateNaissCh='$DateNaissCh' where NumCh=$NumCh" ;
-    $idcon->exec($req2);
+    DateNaissCh='$DateNaissCh' where NumCh='$NumCh'" ;
+    $res=$idcon->exec($req2);
+    if ($res) {
+        header('Location:liste_chevaux.php');
+    }
 }
 
 ?>
@@ -42,11 +53,11 @@ if ($valbtn == 'valider') {
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input name="NumCh" type="number" class="form-control form-control-user"
-                                    value="<?php echo $ligne['NumCh'] ?>" placeholder="numero cheval">
+                                    value="<?php echo $ligne['NumCh']?>" placeholder="numero cheval">
                             </div>
                             <div class="col-sm-6">
                                 <input name="nomch" type="text" class="form-control form-control-user"
-                                    value="<?php echo $ligne['NomCh'] ?>" placeholder="Nom de cheval">
+                                    value="<?php echo $ligne['NomCh']?>" placeholder="Nom de cheval">
                             </div>
                         </div>
                         <div class="form-group row">

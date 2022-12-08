@@ -9,7 +9,10 @@ if ($valbtn == 'valider') {
     $prenomj = $_POST['prenomj'];
     $PoidsJ = $_POST['PoidsJ'];
     $req = "Insert Into jockeys values('$CodeJ','$nomj','$prenomj','$PoidsJ')";
-    $idcon->exec($req);
+    $res=$idcon->exec($req);
+    if ($res) {
+        header('Location:liste_Jokey.php');
+    }
 }
 
 ?>
