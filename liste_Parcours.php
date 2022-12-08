@@ -3,6 +3,12 @@ require "connexiong.php";
 $req = " SELECT * from parcours ";
 $stmt = $idcon->query($req);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+if (isset($_GET['action']) && $_GET['action'] == "delete") {
+    $myID = $_GET['id'];
+    $idcon->exec("DELETE FROM parcours where CodeParc=$myID");
+
+}
 ?>
 
 <?php include_once 'header.php'; ?>
@@ -47,12 +53,13 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
                             <?php echo $ligne["Distance"] ?>
                         </td>
                         <td>
-                            <button class="btn btn-info edit">
+                            <a href="modifierParcours.php?id=<?php echo $ligne['CodeParc'] ?>" class="btn btn-info edit">
                                 <i class="fa fa-edit"></i>
-                            </button>
-                            <button class="btn btn-danger remove" id="delete_ens" type="submit">
+                            </a>
+                            <a href="liste_Parcours.php?id=<?php echo $ligne['CodeParc'] ?>&action=delete"
+                                class="btn btn-danger remove" value="valider" type="submit" name="action">
                                 <i class="fa fa-times"></i>
-                            </button>
+                                <a>
                         </td>
 
                     </tr>

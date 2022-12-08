@@ -3,6 +3,13 @@ require "connexiong.php";
 $req = " SELECT * from jockeys ";
 $stmt = $idcon->query($req);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+
+if (isset($_GET['action']) && $_GET['action'] == "delete") {
+    $myID = $_GET['id'];
+    $idcon->exec("DELETE FROM jockeys where CodeJ=$myID");
+
+}
 ?>
 
 <?php include_once 'header.php'; ?>
@@ -52,12 +59,13 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
                             <?php echo $ligne["PoidsJ"] ?>
                         </td>
                         <td>
-                        <a href="modifierJockeys.php?id=<?php echo $ligne['CodeJ'] ?>" class="btn btn-info edit">
+                            <a href="modifierJockeys.php?id=<?php echo $ligne['CodeJ'] ?>" class="btn btn-info edit">
                                 <i class="fa fa-edit"></i>
-                    </a>
-                            <button class="btn btn-danger remove" id="delete_ens" type="submit">
+                            </a>
+                            <a href="liste_Jokey.php?id=<?php echo $ligne['CodeJ'] ?>&action=delete"
+                                class="btn btn-danger remove" value="valider" type="submit" name="action">
                                 <i class="fa fa-times"></i>
-                            </button>
+                                <a>
                         </td>
 
                     </tr>

@@ -1,7 +1,6 @@
 <?php
 require "connexiong.php";
 
-$myID  = $_GET['id'];
 $myID  = isset($_GET['id'])? $_GET['id']:'';
 
 $req="SELECT * from jockeys where CodeJ='$myID' ";
@@ -15,11 +14,11 @@ $valbtn = isset($_POST['action']) ? $_POST['action'] : '';
 if ($valbtn == 'valider') {
 
     $CodeJ=$_POST['CodeJ'];
-    $NomJ=$_POST['NomJ'];
-    $PrenomJ=$_POST['PrénomJ'];
+    $nomj=$_POST['nomj'];
+    $prenomj=$_POST['prenomj'];
     $PoidsJ=$_POST['PoidsJ'];
-    $req="update jockeys set NomJ= '$NomJ',PrénomJ='$PrenomJ',
-    PoidsJ='$PoidsJ' where CodeJ=$CodeJ" ;
+    $req="update jockeys set NomJ='$nomj',PrénomJ='$prenomj',
+    PoidsJ='$PoidsJ' where CodeJ=$CodeJ";
     $idcon->exec($req);
 }
 
@@ -35,7 +34,7 @@ if ($valbtn == 'valider') {
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">Modifier Cheval</h1>
                     </div>
-                    <form class="user" action="modifierJokeys.php" method="POST">
+                    <form class="user" action="modifierJockeys.php" method="POST">
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input name="CodeJ" type="number" class="form-control form-control-user"

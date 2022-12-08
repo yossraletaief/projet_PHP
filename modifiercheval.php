@@ -73,7 +73,6 @@
 <?php
 require "connexiong.php";
 
-$myID  = $_GET['id'];
 $myID  = isset($_GET['id'])? $_GET['id']:'';
 
 $req="SELECT * from cheval  where NumCh='$myID' ";
@@ -92,7 +91,7 @@ if ($valbtn == 'valider') {
     $PoidsCh=$_POST['PoidsCh'];
     $DateNaissCh=$_POST['DateNaissCh'];
     $req="update cheval set NomCh='$nomch',SexeCh= '$SexeCh',PoidsCh='$PoidsCh',
-    DateNaissCh='$DateNaissCh' where NumCh=$NumCh" ;
+    DateNaissCh='$DateNaissCh' where NumCh='$NumCh'" ;
     $idcon->exec($req);
 }
 

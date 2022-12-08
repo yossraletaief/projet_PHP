@@ -67,7 +67,7 @@ if (isset($_GET['action']) && $_GET['action'] == "delete") {
                         <td>
                             <a href="modifiercheval.php?id=<?php echo $ligne['NumCh'] ?>" class="btn btn-info edit">
                                 <i class="fa fa-edit"></i>
-                                <a>
+                            <a>
 
                                     <a href="liste_chevaux.php?id=<?php echo $ligne['NumCh'] ?>&action=delete"
                                         class="btn btn-danger remove" value="valider" type="submit" name="action">
