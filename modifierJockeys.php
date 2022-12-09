@@ -1,7 +1,6 @@
 <?php
 require "connexiong.php";
 
-$myID  = $_GET['id'];
 $myID  = isset($_GET['id'])? $_GET['id']:'';
 
 $req="SELECT * from jockeys where CodeJ='$myID' ";
@@ -15,8 +14,8 @@ $valbtn = isset($_POST['action']) ? $_POST['action'] : '';
 if ($valbtn == 'valider') {
 
     $CodeJ=$_POST['CodeJ'];
-    $NomJ=$_POST['NomJ'];
-    $PrenomJ=$_POST['PrénomJ'];
+    $nomj=$_POST['nomj'];
+    $prenomj=$_POST['prenomj'];
     $PoidsJ=$_POST['PoidsJ'];
     $req2="update jockeys set NomJ= '$NomJ',PrénomJ='$PrenomJ',
     PoidsJ='$PoidsJ' where CodeJ=$CodeJ" ;

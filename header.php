@@ -82,8 +82,8 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="register.php">Ajouter course</a>
-                        <a class="collapse-item" href="liste_Jokey.php">Liste course</a>
+                        <a class="collapse-item" href="ajouterCourse.php">Ajouter course</a>
+                        <a class="collapse-item" href="liste_Course.php">Liste course</a>
                     </div>
                 </div>
             </li>
